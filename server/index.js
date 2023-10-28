@@ -5,6 +5,7 @@ dotenv.config()
 
 import User from './models/User.js'
 import Product from './models/Product.js'
+import Order from './models/Order.js'
 
 const app = express();
 app.use(express.json());
@@ -63,7 +64,7 @@ app.post('/login', async (req, res) => {
     }
 
 })
-
+//Add Product
 app.post('/product', async (req, res) => {
     const {
         name,
@@ -97,6 +98,7 @@ app.post('/product', async (req, res) => {
     }
 })
 
+//Show All Product
 app.get('/products', async (req, res) => {
     const getProduct = await Product.find()
     if (!getProduct) return res.status(404).send('No products found')
@@ -107,6 +109,7 @@ app.get('/products', async (req, res) => {
     })
 })
 
+//Find a product By Query
 app.get('/product/search',async(req,res)=>{
     const {q}=req.query
     const search= await Product.find({name:{$regex:q,$options:"i"}})
@@ -115,6 +118,7 @@ app.get('/product/search',async(req,res)=>{
     res.json({success:true,data:search,message:'Search Successful'})
 })
 
+// Delete Product
 app.delete('/product/:_id',async(req,res)=>{
     const _id=req.params._id;
     await Product.deleteOne({_id:_id})
@@ -123,6 +127,8 @@ app.delete('/product/:_id',async(req,res)=>{
         message:"Deleted Successfully",
     })
 })
+
+// Find Product By id
 
 app.get('/product/:_id',async(req,res)=>{
     const _id=req.params;
@@ -134,6 +140,8 @@ app.get('/product/:_id',async(req,res)=>{
     })
 })
 
+
+//Update Product
 app.put('/product/:_id',async(req,res)=>{
     const _id=req.params
     const {
@@ -160,6 +168,104 @@ app.put('/product/:_id',async(req,res)=>{
         data:updateProduct,
         message:"Updated Successfully"
     })
+})
+
+
+//Place Order
+
+app.post('/order',async(req,res)=>{
+    const {User,Product,shippingAddress,deliveryCharges,quantity}=req.body
+
+    const placeOrder= new Order({
+        User,
+        Product,
+        shippingAddress,
+        deliveryCharges,
+        quantity
+    })
+
+    try{
+        const SaveOrder= await placeOrder.save()
+
+        res.json({
+            success: true,
+            data:SaveOrder,
+            message:'Order Placed'
+        })
+    }catch(e)
+    {
+        res.json({
+            success: false,
+            message: e.message
+        })
+    }
+})
+
+//get product byId
+
+app.get('/order/:id',async(req,res)=>{
+    const {id}=req.params
+    const getOrderById= await Order.findById(id).populate("User Product")
+
+    res.json({
+        success:true,
+        data:getOrderById,
+        message:"Successfuly Retrieved"
+    })
+})
+
+//get All Order Product
+
+app.get('/orders',async(req,res)=>{
+    const orders =await Order.find().populate('User Product')
+     orders.forEach((order)=>{
+        order.User.password=undefined
+     })
+     if(!orders){
+        return res.status(404).send({success:false,message:'No Orders Found'});
+        }
+
+        res.json({
+            success : true ,
+            data    : orders,
+            message: 'Order Featch Successfully'
+        })
+
+})
+
+//Find Order of Specific User
+
+app.get('/user/order/:_id',async(req,res)=>{
+    const {_id} = req.params
+      const getOrder= await Order.find({User:{_id:_id}}).populate("User Product")
+      getOrder.forEach((order)=>{
+        order.User.password=undefined
+      })
+
+     
+
+      res.json({
+        success :true ,
+        data   : getOrder,
+        message: "Orders Fetched"
+      })
+})
+
+// Update Status 
+
+app.patch('/updateorder/:_id',async(req,res)=>{
+    const {_id}=req.params
+    const {status}=req.body
+
+     await Order.updateOne({_id:_id},{$set:{status:status}})
+
+     const UpdateStatus= await Order.findById(_id)
+   
+            res.json({
+                success: true,
+                data:UpdateStatus,
+                message: 'Status Updated successfully!'
+            })
 })
 
 
