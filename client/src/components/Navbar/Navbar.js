@@ -45,8 +45,7 @@ function Navbar() {
      </div>
 
     <div>
-      Hello, {user?.name}
-
+      Hello, {user?.name || 'User'}
       {
       user?.name ? (
         <button onClick={()=>{

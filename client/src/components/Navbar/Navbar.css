@@ -1,6 +1,6 @@
-.navbar{
+
+.navbar {
     background-color: white;
-    height: 30px;
     padding: 15px 20px;
     border-radius: 10px;
     position: sticky;
@@ -8,34 +8,65 @@
     display: flex;
     justify-content: space-between;
 }
-.brand{
+
+.brand {
     text-decoration: none;
     color: black;
     font-size: 20px;
     font-weight: 500;
 }
-.nav-list{
+
+.nav-list {
     color: black;
     padding: 10px 20px;
     margin: 0 10px;
     text-decoration: none;
 }
-.nav-list:hover{
+
+.nav-list:hover {
     background-color: rgb(207, 159, 252);
     color: #fff;
     border-radius: 20px;
 }
-.logout-img{
+
+.logout-img {
     height: 20px;
 }
-.btn-logout{
-   padding: 5px;
-   border: none;
-   border-radius: 10px;
-   cursor: pointer;
-   transition: all 0.4s ease-in-out;
-   margin: 0px 20px;
+
+.btn-logout {
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    margin: 0px 20px;
 }
-.btn-logout:hover{
-    background: rgb(207, 159, 252) ;
+
+.btn-logout:hover {
+    background: rgb(207, 159, 252);
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .brand {
+        margin: 10px 0;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .nav-list {
+        padding: 5px 10px;
+        margin: 5px 0;
+    }
+
+    .btn-logout {
+        margin: 10px 10px;
+    }
 }
