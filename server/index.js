@@ -9,7 +9,6 @@ import Order from './models/Order.js'
 
 const app = express();
 app.use(express.json());
-
 const PORT = process.env.PORT || 5000
 
 //connect to mongodb

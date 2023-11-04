@@ -9,4 +9,17 @@ body{
     text-align: center;
     background-color: rgb(207, 159, 252);
     color: #fff;
+    min-width: 150px;
+    border-radius: 10px;
 }
+.input-box{
+    display: block;
+    font-size: 15px;
+    padding: 5px 10px;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fff;
+    margin: 0px auto;
+   }

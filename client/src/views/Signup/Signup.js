@@ -19,6 +19,10 @@ function Signup() {
         address:address
       })
    alert(responce?.data?.message);
+   if(responce?.data?.success===true)
+   {
+    window.location.href('/login')
+   }
 
     
   }

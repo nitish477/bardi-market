@@ -1,10 +1,13 @@
 .form{
-   background-color: hsl(220deg 8.91% 19.8%); 
-   height: auto;
-   width: fit-content;
-   padding:30px 100px;
-   margin: 2rem auto;
-   border-radius: 10px;
+    background-color: hsl(220deg 8.91% 19.8%); 
+    height: auto;
+    width: fit-content;
+    padding:30px 100px;
+    margin: 2rem auto;
+    border-radius: 10px;
+ }
+ label{
+    color: white;
 }
 .title{
     font-family :"Times New Roman";
@@ -13,14 +16,10 @@
     color: white;
     font-weight: bolder;
 }
-label{
-    color: white;
-}
-
 .form-control{
     margin: 20px 0;
 }
-.btn-singup{
+.login-btn{
     display: block;
     margin: 10px auto;
 }
