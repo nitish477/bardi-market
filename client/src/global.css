@@ -1,5 +1,11 @@
+*{
+    font-family: 'Lato', sans-serif;
+font-family: 'Poppins', sans-serif;
+}
 body{
     background-color: #ffe6ff;
+    margin: 0;
+    padding: 0;
 }
 .btn{
     border: none;

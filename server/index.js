@@ -21,6 +21,12 @@ const connectMongo = async () => {
 
 app.post('/signup', async (req, res) => {
     const { name, address, email, password, mobile } = req.body
+    if(!name||!email||!password||!mobile){
+        return res.json({
+            success: false,
+            message:'Please provide all fields.'
+        })
+    }
     const newUser = new User({
         name,
         address,
@@ -28,6 +34,7 @@ app.post('/signup', async (req, res) => {
         password,
         email
     })
+    
     try {
         const signinfo = await newUser.save()
         res.json({

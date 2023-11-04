@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.css'
 import axios from 'axios';
+import Navbar from '../../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+   
 
     const login= async ()=>{
         const responce= await axios.post('/login',{
@@ -18,9 +21,12 @@ function Login() {
         window.location.href='/'
       }
     }
+
+  
    
   return (
     <div>
+      <Navbar/>
         <form className='form'>
             <h1 className='title'>Login</h1>
         <div className='form-control'>
@@ -46,6 +52,10 @@ function Login() {
           />
          </div>
          <button className='btn login-btn' onClick={login} type='button'>Login</button>
+
+        <span>
+        <Link to={'/signup'} className='create-new-user'>Create new Account?</Link>
+        </span>
          </form>
     </div>
   )
