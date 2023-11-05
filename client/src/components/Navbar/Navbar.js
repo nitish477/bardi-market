@@ -53,7 +53,9 @@ function Navbar() {
          setUser(logout)
          window.location.href='/login'
           
-        }} className='btn-logout'>
+        }} className='btn-logout'
+         type='button'
+        >
           <img src="https://cdn-icons-png.flaticon.com/128/2550/2550435.png" alt="" className='logout-img' />
         </button>
       ) :null

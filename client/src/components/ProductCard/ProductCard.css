@@ -1,0 +1,32 @@
+.product-card{
+    width: 250px;
+    background-color: #fff;
+    padding: 10px 20px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+.product-img{
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #fff;
+}
+.product-price{
+    font-size: 18px;
+    color: red;
+}
+.product-name{
+    font-size: 18px;
+    display: -webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-btn{
+    cursor: pointer;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+}
