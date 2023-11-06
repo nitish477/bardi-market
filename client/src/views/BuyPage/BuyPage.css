@@ -1,0 +1,15 @@
+.product-buy-img{
+    height: 300px;
+    background-color: white;
+    border-radius: 15px;
+    margin: 10px 30px;
+}
+.main-contanier{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 30px;
+}
+
+@media screen and (max-width= 768px) {
+    
+}

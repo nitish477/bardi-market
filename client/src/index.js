@@ -5,6 +5,7 @@ import './global.css'
 import Login from './views/Login/Login';
 import Home from './views/Home/Home';
 import Order from './views/Order/Order';
+import BuyPage from './views/BuyPage/BuyPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router= createBrowserRouter([
@@ -23,6 +24,10 @@ const router= createBrowserRouter([
     {
         path: '/order',
         element: <Order/>
+    },
+    {
+        path: '/buynow/:id',
+        element: <BuyPage/>
     }
 ])
 

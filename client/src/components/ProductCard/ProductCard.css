@@ -25,6 +25,7 @@
   text-overflow: ellipsis;
 }
 .product-btn{
+    text-decoration: none;
     cursor: pointer;
     display: block;
     width: 70%;

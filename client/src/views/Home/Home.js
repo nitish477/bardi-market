@@ -23,8 +23,8 @@ function Home() {
       <div className='product-contanier'>
         {
            product?.map((obj,index)=>{
-            const {name,imgUrl,price}= obj
-            return <ProductCard key={index} name={name} imgUrl={imgUrl} price={price} />
+            const {name,imgUrl,price,_id}= obj
+            return <ProductCard key={index} name={name} imgUrl={imgUrl} price={price} id={_id} />
            })
         }
       </div>
