@@ -18,6 +18,7 @@ body{
     color: #fff;
     min-width: 150px;
     border-radius: 10px;
+    outline: none;
 }
 .input-box{
     display: block;
