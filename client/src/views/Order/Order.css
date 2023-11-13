@@ -1,0 +1,36 @@
+.show-order{
+    margin: 10px ;
+    height: auto;
+    padding: 10px 20px;
+    background-color: rgb(205, 156, 250);
+    color: white;
+    width: 400px;
+    border-radius: 20px;
+    position: relative;
+}
+.status{
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    background-color: rgb(169, 92, 241);
+    border-radius: 0 20px 0 0;
+    padding: 2px 5px;
+}
+.order-product-name{
+   
+    text-decoration: none;
+    color: white;
+   
+}
+.danger{
+    background-color: red;
+    color: white;
+}
+.warning{
+    background-color: yellow;
+    color: black;
+}
+.success{
+    background-color: greenyellow;
+    color: black;
+}

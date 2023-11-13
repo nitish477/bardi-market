@@ -189,6 +189,7 @@ app.post('/order',async(req,res)=>{
         deliveryCharges,
         quantity
     })
+    
 
     try{
         const SaveOrder= await placeOrder.save()
@@ -263,6 +264,28 @@ app.patch('/updateorder/:_id',async(req,res)=>{
     const {_id}=req.params
     const {status}=req.body
 
+    const Status_Priority={
+        pending:0,
+        Shipped:1,
+        delivered:2,
+        return: 3,
+        cancelled:4,
+        reject:5
+    }
+
+    const order=  Order.findById(_id)
+    const currentStatus=order.status
+    const current_priority=Status_Priority[currentStatus]
+    const newStatus= Status_Priority[status]
+   
+  
+    if(current_priority > newStatus){
+       return res.json({
+            success: false,
+            message:"Invalid status transition"
+        })
+    }
+
      await Order.updateOne({_id:_id},{$set:{status:status}})
 
      const UpdateStatus= await Order.findById(_id)
@@ -273,6 +296,7 @@ app.patch('/updateorder/:_id',async(req,res)=>{
                 message: 'Status Updated successfully!'
             })
 })
+
 
 
 app.listen(PORT, () => {
